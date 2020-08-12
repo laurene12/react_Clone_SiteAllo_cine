@@ -90,16 +90,16 @@ const Details = ({ match }) => {
                 <i
                   onClick={() => setIsOpen(true)}
                   className="far fa-play-circle"
-                  style={{ fontSize: 95, color: "#f4c10f", cursor: "pointer" }}
+                  style={{ fontSize: 70, color: "red", cursor: "pointer" }}
                 ></i>
               </div>
-              <div className="carousel-caption">{detail.title}</div>
             </div>
           </div>
 
           <div className="container">
             <div className="row mt-3">
               <div className="col">
+                <h1 className="mb-3">{detail.title}</h1>
                 <h5 className="mb-3"> GENRES MOVIE</h5>
               </div>
             </div>

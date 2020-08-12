@@ -22,7 +22,7 @@ const SimilarMovies = ({ params }) => {
 
   const similarMovieList = similarMovie.slice(0, 9).map((item, index) => {
     return (
-      <div className="col-md-4 col-sm-4" key={index}>
+      <div className="col-md-4 col-sm-6" key={index}>
         <div>
           <Link to={`/movie/${item.id}`}>
             <img

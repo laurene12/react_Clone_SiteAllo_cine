@@ -15,13 +15,13 @@ const CarouselSlide = () => {
   }, []);
   const movies = nowPlaying.slice(0, 6).map((item, index) => {
     return (
-      <div style={{ height: 500, width: "100%" }} key={index}>
+      <div style={{ width: "100%" }} key={index}>
         <div className="carousel">
           <img src={item.photos} alt={item.title} className="d-block w-100" />
         </div>
         <div
           className="carousel-caption"
-          style={{ textAlign: "center", fontSize: 90 }}
+          style={{ textAlign: "center", fontSize: 35 }}
         >
           {item.title}
         </div>
