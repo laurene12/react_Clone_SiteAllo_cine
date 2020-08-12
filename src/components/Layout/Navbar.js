@@ -7,7 +7,7 @@ import Search from "../Search";
 const Navbar = () => {
   return (
     <NavbarContainer>
-      <nav className="navbar navbar-expand-lg navbar-light">
+      <nav className="navbar fixed-top  navbar-expand-lg navbar-light">
         <Link className="navbar-brand ml-5" to="l">
           <img src={logo} alt="logo" style={{ width: "75px" }} />
         </Link>
