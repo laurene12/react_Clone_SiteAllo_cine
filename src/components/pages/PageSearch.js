@@ -61,7 +61,6 @@ const PageSearch = () => {
   return (
     <Layout>
       <Container>
-        <h1 className="font-weight-bold mb-3">List Movies</h1>
         <div className="row mt-3">{moviesMatchList}</div>
         <PaginationMovies
           moviesOnPage={moviesOnPage}
