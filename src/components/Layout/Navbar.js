@@ -45,6 +45,7 @@ const Navbar = () => {
           <Search />
         </div>
       </nav>
+      <div className="menu-vide"></div>
     </NavbarContainer>
   );
 };
@@ -52,6 +53,13 @@ const Navbar = () => {
 export default Navbar;
 
 const NavbarContainer = styled.div`
+  .menu-vide {
+    height: 70px;
+    background-color: #2a2e37;
+  }
+  nav {
+    z-index: 2;
+  }
   .navbar {
     background: #0f1014;
     padding: 0 45px 10px 0;

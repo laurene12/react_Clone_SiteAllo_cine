@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { Container } from "react-bootstrap";
 import axios from "axios";
+import Slider from "react-slick";
+import styled from "styled-components";
 
 const apiKey = "03fa83b97819a7cd7f82b600399cb6d4";
+
 const UpComming = () => {
   const [upComming, setUpComming] = useState([]);
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 300,
+    slidesToShow: 4,
+    slidesToScroll: 3,
+  };
 
   useEffect(() => {
     axios
@@ -20,37 +31,24 @@ const UpComming = () => {
       });
   }, []);
 
-  const listMoviesUpComming = upComming.slice(4, 8).map((item, index) => {
-    return (
-      <div className="col-md-3 col-sm-6" key={index}>
-        <div>
-          <Link to={`/movie/${item.id}`}>
-            <img
-              className="img-fluid rounded"
-              src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
-              alt={item.title}
-            ></img>
-          </Link>
-        </div>
-        <div>
-          <p style={{ fontWeight: "bolder" }}>{item.title}</p>
-        </div>
-      </div>
-    );
-  });
-
   return (
     <UpCommingStyle>
-      <div className="container">
-        <div className="row mt-3">
-          <div className="col">
-            <h1 className="font-weight-bold" style={{ color: "#fff" }}>
-              Movies up comming
-            </h1>
-            <div className="row mt-3">{listMoviesUpComming}</div>
-          </div>
-        </div>
-      </div>
+      <Container>
+        <h1 className="font-weight-bold mb-3">Movies up comming</h1>
+        <Slider {...settings}>
+          {upComming.map((item, index) => (
+            <>
+              <div className="col" style={{ width: "100%" }}>
+                <img
+                  className="img-fluid rounded"
+                  src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+                  alt={item.title}
+                ></img>
+              </div>
+            </>
+          ))}
+        </Slider>
+      </Container>
     </UpCommingStyle>
   );
 };
@@ -58,5 +56,5 @@ const UpComming = () => {
 export default UpComming;
 
 const UpCommingStyle = styled.div`
-  margin-bottom: 30px;
+  padding-bottom: 50px;
 `;
