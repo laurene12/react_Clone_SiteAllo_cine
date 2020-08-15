@@ -24,7 +24,7 @@ const Footer = () => {
                     <strong>
                       <i className="fas fa-phone-alt"></i>
                     </strong>{" "}
-                    <a href="243812874074">+243812874074</a>
+                    <a href="tel:243812874074">+243812874074</a>
                   </p>
                 </li>
                 <li>
