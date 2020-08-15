@@ -136,12 +136,6 @@ const DetailsStyle = styled.div`
     margin-bottom: 10px;
     font-weight: 500;
   }
-  .list-inline-item .btn-outline-info:hover {
-    color: #fff;
-    border-color: #fff;
-    background-color: transparent;
-    transition: all 0.3s ease-in-out;
-  }
   h5 {
     color: #5a606b;
     font-weight: bolder;

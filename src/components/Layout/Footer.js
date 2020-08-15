@@ -22,7 +22,7 @@ const Footer = () => {
                 <li>
                   <p>
                     <strong>
-                      <i className="fas fa-map-marker-alt"></i> Phone:
+                      <i className="fas fa-phone-alt"></i> Phone:
                     </strong>{" "}
                     Tel: (243) 812 874 074
                   </p>

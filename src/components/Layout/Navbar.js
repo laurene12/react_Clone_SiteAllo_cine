@@ -25,17 +25,22 @@ const Navbar = () => {
           </span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className="collapse navbar-collapse" id="navContent">
           <ul className="navbar-nav m-auto">
             <li className="nav-item active">
-              <Link className="nav-link text-white text-uppercase ml-5" to="/">
+              <Link
+                className="nav-link  text-uppercase ml-5"
+                id="textLink"
+                to="/"
+              >
                 Home&nbsp;
                 <span className="sr-only">(current)</span>
               </Link>
             </li>
             <li className="nav-item">
               <Link
-                className="nav-link text-white text-uppercase ml-5"
+                className="nav-link  text-uppercase ml-5"
+                id="textLink"
                 to="/movies"
               >
                 movies
@@ -63,7 +68,6 @@ const NavbarContainer = styled.div`
   .navbar {
     background: #0f1014;
     padding: 0 45px 10px 0;
-    color: #fff;
   }
   .navbar-toggler:focus {
     outline: none;
@@ -80,5 +84,17 @@ const NavbarContainer = styled.div`
     border-color: #000;
     background-color: transparent;
     transition: all 0.3s ease-in-out;
+  }
+
+  ul li #textLink:hover {
+    color: #f4c10f;
+    font-weight: bolder;
+    font-size: 22px;
+    background-color: transparent;
+  }
+  #textLink {
+    color: #fff;
+    font-weight: bolder;
+    font-size: 20px;
   }
 `;

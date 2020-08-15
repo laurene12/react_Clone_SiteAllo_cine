@@ -23,18 +23,16 @@ const UpComming = () => {
   const listMoviesUpComming = upComming.slice(4, 8).map((item, index) => {
     return (
       <div className="col-md-3 col-sm-6" key={index}>
-        <div>
-          <Link to={`/movie/${item.id}`}>
+        <Link to={`/movie/${item.id}`}>
+          <figure>
             <img
               className="img-fluid rounded"
               src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
               alt={item.title}
-            ></img>
-          </Link>
-        </div>
-        <div>
-          <p style={{ fontWeight: "bolder" }}>{item.title}</p>
-        </div>
+            />
+            <figcaption>{item.title}</figcaption>
+          </figure>
+        </Link>
       </div>
     );
   });
@@ -59,4 +57,15 @@ export default UpComming;
 
 const UpCommingStyle = styled.div`
   margin-bottom: 30px;
+  figure:hover {
+    color: #f4c10f;
+    transition: all 0.3s ease-in-out;
+    font-weight: 700;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+    list-style: none;
+    font-weight: 500;
+  }
 `;

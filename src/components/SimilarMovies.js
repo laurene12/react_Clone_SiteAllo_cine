@@ -23,18 +23,16 @@ const SimilarMovies = ({ params }) => {
   const similarMovieList = similarMovie.slice(0, 9).map((item, index) => {
     return (
       <div className="col-md-4 col-sm-6" key={index}>
-        <div>
-          <Link to={`/movie/${item.id}`}>
+        <Link to={`/movie/${item.id}`}>
+          <figure>
             <img
               className="img-fluid rounded"
               src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
               alt={item.title}
-            ></img>
-          </Link>
-        </div>
-        <div className="mt-3">
-          <p>{item.title}</p>
-        </div>
+            />
+            <figcaption>{item.title}</figcaption>
+          </figure>
+        </Link>
       </div>
     );
   });
@@ -58,7 +56,15 @@ const SimilarMoviesStyle = styled.div`
     color: #5a606b;
     font-weight: bolder;
   }
-  p {
-    font-weight: bolder;
+  figure:hover {
+    color: #f4c10f;
+    transition: all 0.3s ease-in-out;
+    font-weight: 600;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+    list-style: none;
+    font-weight: 500;
   }
 `;
