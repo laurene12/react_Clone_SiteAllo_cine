@@ -25,7 +25,7 @@ const Navbar = () => {
           </span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navContent">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav m-auto">
             <li className="nav-item active">
               <Link
