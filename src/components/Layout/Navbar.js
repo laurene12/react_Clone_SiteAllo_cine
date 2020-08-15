@@ -63,7 +63,7 @@ const NavbarContainer = styled.div`
     background-color: #2a2e37;
   }
   nav {
-    z-index: 2;
+    z-index: 1000;
   }
   .navbar {
     background: #0f1014;
