@@ -14,7 +14,7 @@ const Footer = () => {
                 <li>
                   <p>
                     <strong>
-                      <i className="fas fa-map-marker-alt"></i> Address:
+                      <i className="fas fa-map-marker-alt"></i>
                     </strong>{" "}
                     Ville Kinshasa, RDC
                   </p>
@@ -22,7 +22,7 @@ const Footer = () => {
                 <li>
                   <p>
                     <strong>
-                      <i className="fas fa-phone-alt"></i> Phone:
+                      <i className="fas fa-phone-alt"></i>
                     </strong>{" "}
                     <a href="243812874074">+243812874074</a>
                   </p>
@@ -30,7 +30,7 @@ const Footer = () => {
                 <li>
                   <p>
                     <strong>
-                      <i className="fas fa-envelope"></i> Email:
+                      <i className="fas fa-envelope"></i>
                     </strong>{" "}
                     <a href="mailto:bitotalaurene@gmail.com">
                       bitotalaurene@gmail.com

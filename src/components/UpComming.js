@@ -56,6 +56,7 @@ const UpComming = () => {
 export default UpComming;
 
 const UpCommingStyle = styled.div`
+  padding: 20px;
   margin-bottom: 30px;
   figure:hover {
     color: #f4c10f;
