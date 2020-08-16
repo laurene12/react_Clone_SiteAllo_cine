@@ -61,6 +61,9 @@ const SimilarMoviesStyle = styled.div`
     transition: all 0.3s ease-in-out;
     font-weight: 600;
   }
+  img:hover {
+    box-shadow: 0px 0px 2px 1px #f4c10f;
+  }
   a {
     color: #fff;
     text-decoration: none;

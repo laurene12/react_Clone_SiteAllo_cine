@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const apiKey = "03fa83b97819a7cd7f82b600399cb6d4";
 
 const Genres = () => {
   const [genres, setGenres] = useState([]);
   const [movieByGenre, setMovieByGenre] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     axios
@@ -51,6 +53,7 @@ const Genres = () => {
   useEffect(() => {
     const dataAPI = async () => {
       setMovieByGenre(await dataMovieByGenre(28));
+      setIsLoaded(true);
     };
 
     dataAPI();
@@ -75,7 +78,17 @@ const Genres = () => {
       </li>
     );
   });
-
+  if (!isLoaded) {
+    return (
+      <>
+        <SkeletonTheme color="#202020" highlightColor="#444">
+          <p>
+            <Skeleton count={15} duration={2} circle={true} />
+          </p>
+        </SkeletonTheme>
+      </>
+    );
+  }
   const movieList = movieByGenre.map((item, index) => {
     return (
       <div className="col-md-3 col-sm-6" key={index}>
@@ -95,8 +108,8 @@ const Genres = () => {
 
   return (
     <GenreStyle>
-      <div className="row mt-3">
-        <div className="col">
+      <div className="row ">
+        <div className="col mt-8">
           <ul className="list-inline">{genreList}</ul>
         </div>
       </div>
@@ -115,6 +128,7 @@ const Genres = () => {
 export default Genres;
 
 const GenreStyle = styled.div`
+  padding: 20px;
   margin: 35px;
   .list-inline-item .btn-outline-info {
     color: #5a606b;
@@ -133,6 +147,9 @@ const GenreStyle = styled.div`
     color: #f4c10f;
     transition: all 0.3s ease-in-out;
     font-weight: 700;
+  }
+  img:hover {
+    box-shadow: 0px 0px 2px 1px #f4c10f;
   }
   a {
     color: #fff;

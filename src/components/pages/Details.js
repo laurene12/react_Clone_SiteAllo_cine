@@ -8,6 +8,7 @@ import Layout from "../Layout/Layout";
 import CastsMovies from "../CastsMovies";
 import SimilarMovies from "../SimilarMovies";
 import DetailsInfo from "../DetailsInfo";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const Details = ({ match }) => {
   let params = match.params;
@@ -15,18 +16,32 @@ const Details = ({ match }) => {
   const [detail, setDetail] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [video, setVideo] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const dataAPI = async () => {
       setDetail(await dataMovieDetail(params.id));
       setVideo(await dataMovieVideos(params.id));
+      setIsLoaded(true);
     };
 
     dataAPI();
   }, [params.id]);
+  if (!isLoaded) {
+    return (
+      <>
+        <div className="conatainer mt-5" style={{ padding: "20px" }}>
+          <SkeletonTheme color="#202020" highlightColor="#444">
+            <p>
+              <Skeleton count={15} duration={2} circle={true} />
+            </p>
+          </SkeletonTheme>
+        </div>
+      </>
+    );
+  }
 
   genres = detail.genres;
-
   let genresList;
   if (genres) {
     genresList = genres.map((g, i) => {

@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../logo.svg";
+import logo from "../../Logo_v.png";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Search from "../Search";
@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <NavbarContainer>
       <nav className="navbar fixed-top  navbar-expand-lg navbar-light">
-        <Link className="navbar-brand ml-5" to="l">
+        <Link className="navbar-brand ml-5" to="/">
           <img src={logo} alt="logo" style={{ width: "75px" }} />
         </Link>
         <button

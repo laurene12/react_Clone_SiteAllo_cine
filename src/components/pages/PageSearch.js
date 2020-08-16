@@ -6,6 +6,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import PaginationMovies from "../PaginationMovies";
 import styled from "styled-components";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const apiKey = "03fa83b97819a7cd7f82b600399cb6d4";
 const PageSearch = () => {
@@ -13,7 +14,7 @@ const PageSearch = () => {
     return state.dataMovies;
   });
   const [dataMovies, setDataMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [moviesOnPage, setMoviesOnPage] = useState(8);
 
@@ -24,7 +25,7 @@ const PageSearch = () => {
       )
       .then((res) => {
         setDataMovies(res.data.results);
-        setLoading(false);
+        setIsLoaded(true);
       })
       .catch((err) => {
         console.error(err);
@@ -34,13 +35,21 @@ const PageSearch = () => {
   const indexOfFirstPage = indexOfLastPage - moviesOnPage;
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  if (!isLoaded) {
+    return (
+      <div className="conatainer mt-5" style={{ padding: "20px" }}>
+        <SkeletonTheme color="#202020" highlightColor="#444">
+          <p>
+            <Skeleton count={15} duration={2} circle={true} />
+          </p>
+        </SkeletonTheme>
+      </div>
+    );
+  }
 
   const moviesMatchList = dataMovies
     .slice(indexOfFirstPage, indexOfLastPage)
     .map((item, index) => {
-      if (loading) {
-        return <h1>Loading</h1>;
-      }
       return (
         <div className="col-md-3 col-sm-6" key={index}>
           <Link to={`/movie/${item.id}`}>
@@ -77,10 +86,14 @@ const PageSearch = () => {
 export default PageSearch;
 
 const PageSearchStyle = styled.div`
+  padding: 20px;
   figure:hover {
     color: #f4c10f;
     transition: all 0.3s ease-in-out;
     font-weight: 700;
+  }
+  img:hover {
+    box-shadow: 0px 0px 2px 1px #f4c10f;
   }
   a {
     color: #fff;
