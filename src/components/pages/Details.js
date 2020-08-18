@@ -8,7 +8,6 @@ import Layout from "../Layout/Layout";
 import CastsMovies from "../CastsMovies";
 import SimilarMovies from "../SimilarMovies";
 import DetailsInfo from "../DetailsInfo";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const Details = ({ match }) => {
   let params = match.params;
@@ -16,30 +15,15 @@ const Details = ({ match }) => {
   const [detail, setDetail] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [video, setVideo] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const dataAPI = async () => {
       setDetail(await dataMovieDetail(params.id));
       setVideo(await dataMovieVideos(params.id));
-      setIsLoaded(true);
     };
 
     dataAPI();
   }, [params.id]);
-  if (!isLoaded) {
-    return (
-      <>
-        <div className="conatainer mt-5" style={{ padding: "20px" }}>
-          <SkeletonTheme color="#202020" highlightColor="#444">
-            <p>
-              <Skeleton count={15} duration={2} circle={true} />
-            </p>
-          </SkeletonTheme>
-        </div>
-      </>
-    );
-  }
 
   genres = detail.genres;
   let genresList;
@@ -100,7 +84,7 @@ const Details = ({ match }) => {
                 className="d-block w-100"
                 src={`http://image.tmdb.org/t/p/original/${detail.backdrop_path}`}
                 alt={detail.title}
-              ></img>
+              />
               <div className="carousel-center">
                 <i
                   onClick={() => setIsOpen(true)}
@@ -115,7 +99,6 @@ const Details = ({ match }) => {
             <div className="row mt-3">
               <div className="col">
                 <h1 className="mb-3">{detail.title}</h1>
-                <h5 className="mb-3"> GENRES MOVIE</h5>
               </div>
             </div>
             <div className="row mt-3">

@@ -2,15 +2,14 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+// import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const apiKey = "03fa83b97819a7cd7f82b600399cb6d4";
 
 const Genres = () => {
   const [genres, setGenres] = useState([]);
   const [movieByGenre, setMovieByGenre] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-
+  // const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     axios
       .get(
@@ -52,8 +51,9 @@ const Genres = () => {
 
   useEffect(() => {
     const dataAPI = async () => {
+      setTimeout(() => {}, 5000);
       setMovieByGenre(await dataMovieByGenre(28));
-      setIsLoaded(true);
+      // setIsLoaded(true);
     };
 
     dataAPI();
@@ -78,17 +78,17 @@ const Genres = () => {
       </li>
     );
   });
-  if (!isLoaded) {
-    return (
-      <>
-        <SkeletonTheme color="#202020" highlightColor="#444">
-          <p>
-            <Skeleton count={15} duration={2} circle={true} />
-          </p>
-        </SkeletonTheme>
-      </>
-    );
-  }
+  // if (!isLoaded) {
+  //   return (
+  //     <>
+  //       <SkeletonTheme color="#202020" highlightColor="#444">
+  //         <p>
+  //           <Skeleton count={5} circle={true} width={50} height={50} />
+  //         </p>
+  //       </SkeletonTheme>
+  //     </>
+  //   );
+  // }
   const movieList = movieByGenre.map((item, index) => {
     return (
       <div className="col-md-3 col-sm-6" key={index}>

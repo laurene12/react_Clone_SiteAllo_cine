@@ -1,24 +1,16 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import axios from "axios";
 import { Link } from "react-router-dom";
-
-const apiKey = "03fa83b97819a7cd7f82b600399cb6d4";
+import { dataTopMovies } from "../API";
 
 const MeilleursFilms = () => {
   const [topMovies, setTopMovies] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`
-      )
-      .then((res) => {
-        setTopMovies(res.data.results);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    const dataAPI = async () => {
+      setTopMovies(await dataTopMovies());
+    };
+    dataAPI();
   }, []);
 
   const topMoviesList = topMovies.slice(0, 8).map((item, index) => {
@@ -28,11 +20,11 @@ const MeilleursFilms = () => {
           <figure>
             <img
               className="img-fluid rounded"
-              src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+              src={item.photos}
               alt={item.title}
             />
             <figcaption>{item.title}</figcaption>
-            <p className="text-white">Vote:{item.vote_average}</p>
+            <p className="text-white">Vote:{item.vote}</p>
           </figure>
         </Link>
       </div>

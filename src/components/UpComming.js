@@ -1,52 +1,18 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { dataMovieUpComming } from "../API";
 
-const apiKey = "03fa83b97819a7cd7f82b600399cb6d4";
 const UpComming = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
   const [data, setData] = useState([]);
-
-  const dataMovie = async () => {
-    try {
-      const { data } = await axios.get(
-        `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=1`
-      );
-      const posterUrl = "https://image.tmdb.org/t/p/original/";
-      const modifiedData = data["results"].map((indice) => ({
-        id: indice["id"],
-        title: indice["title"],
-        images: posterUrl + indice["poster_path"],
-      }));
-
-      return modifiedData;
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   useEffect(() => {
     const dataAPI = async () => {
-      setData(await dataMovie());
-      setIsLoaded(true);
+      setData(await dataMovieUpComming());
     };
 
     dataAPI();
   }, []);
-
-  if (!isLoaded) {
-    return (
-      <>
-        <SkeletonTheme color="#202020" highlightColor="#444">
-          <p>
-            <Skeleton count={15} duration={2} circle={true} />
-          </p>
-        </SkeletonTheme>
-      </>
-    );
-  }
 
   const listMoviesUpComming = data.slice(4, 8).map((item, index) => {
     return (

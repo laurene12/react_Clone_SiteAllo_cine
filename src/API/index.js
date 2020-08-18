@@ -15,14 +15,14 @@ export const dataMovies = async () => {
       },
     });
 
-    const posterUrl = "https://image.tmdb.org/t/p/original/";
-    const modifiedData = data["results"].map((indice) => ({
+    const imgUrl = "https://image.tmdb.org/t/p/original/";
+    const formateData = data["results"].map((indice) => ({
       id: indice["id"],
-      photos: posterUrl + indice["backdrop_path"],
+      photos: imgUrl + indice["backdrop_path"],
       title: indice["title"],
     }));
 
-    return modifiedData;
+    return formateData;
   } catch (error) {
     console.log(error);
   }
@@ -49,6 +49,61 @@ export const dataMovieVideos = async (id) => {
       },
     });
     return data["results"][0];
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const dataTopMovies = async () => {
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`
+    );
+    const imgUrl = "https://image.tmdb.org/t/p/original/";
+    const formatData = data["results"].map((indice) => ({
+      id: indice["id"],
+      title: indice["title"],
+      photos: imgUrl + indice["poster_path"],
+      vote: indice["vote_average"],
+    }));
+
+    return formatData;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const dataMovieUpComming = async () => {
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=1`
+    );
+    const imgUrl = "https://image.tmdb.org/t/p/original/";
+    const formateData = data["results"].map((indice) => ({
+      id: indice["id"],
+      title: indice["title"],
+      images: imgUrl + indice["poster_path"],
+    }));
+
+    return formateData;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const dataSimilarMovie = async (id) => {
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${apiKey}&language=en-US&page=1`
+    );
+    const imgUrl = "https://image.tmdb.org/t/p/original/";
+    const formateData = data["results"].map((indice) => ({
+      id: indice["id"],
+      title: indice["title"],
+      photos: imgUrl + indice["poster_path"],
+    }));
+
+    return formateData;
   } catch (error) {
     console.log(error);
   }

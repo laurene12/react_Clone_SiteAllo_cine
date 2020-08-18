@@ -1,23 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import axios from "axios";
+import { dataSimilarMovie } from "../API";
 
-const apiKey = "03fa83b97819a7cd7f82b600399cb6d4";
 const SimilarMovies = ({ params }) => {
   const [similarMovie, setSimilarMovie] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${params}/similar?api_key=${apiKey}&language=en-US&page=1`
-      )
-      .then((res) => {
-        setSimilarMovie(res.data.results);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    const dataAPI = async () => {
+      setSimilarMovie(await dataSimilarMovie(params));
+    };
+    dataAPI();
   }, [params]);
 
   const similarMovieList = similarMovie.slice(0, 9).map((item, index) => {
@@ -27,7 +20,7 @@ const SimilarMovies = ({ params }) => {
           <figure>
             <img
               className="img-fluid rounded"
-              src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+              src={item.photos}
               alt={item.title}
             />
             <figcaption>{item.title}</figcaption>
