@@ -19,7 +19,9 @@ const DetailsInfo = ({ detail }) => {
     <DetailsInfoStyle>
       <div className="row mt-3">
         <div className="col-sm-5">
-          <h5 className="mb-3">DETAILS</h5>
+          <h5 className="mb-3" style={{ color: " #f4c10f" }}>
+            DETAILS
+          </h5>
           <ul className="list-unstyled">
             <li className="mb-1">
               <p>
@@ -47,7 +49,9 @@ const DetailsInfo = ({ detail }) => {
         </div>
         <div className="col-sm-1"></div>
         <div className="col-sm-6">
-          <h5 className="mb-3">OVERVIEW</h5>
+          <h5 className="mb-3" style={{ color: " #f4c10f" }}>
+            OVERVIEW
+          </h5>
           {detail.overview}
         </div>
       </div>
@@ -65,9 +69,7 @@ const DetailsInfoStyle = styled.div`
     color: #5a606b;
     font-weight: bolder;
   }
-  h5 {
-    color: #5a606b;
-  }
+
   hr {
     border-top: 2px solid #5a606b;
   }

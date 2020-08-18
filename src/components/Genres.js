@@ -51,7 +51,6 @@ const Genres = () => {
 
   useEffect(() => {
     const dataAPI = async () => {
-      setTimeout(() => {}, 5000);
       setMovieByGenre(await dataMovieByGenre(28));
       // setIsLoaded(true);
     };
@@ -111,13 +110,6 @@ const Genres = () => {
       <div className="row ">
         <div className="col mt-8">
           <ul className="list-inline">{genreList}</ul>
-        </div>
-      </div>
-      <div className="row mt-3">
-        <div className="col">
-          <h1 className="font-weight-bold" style={{ color: "#fff" }}>
-            Movies List
-          </h1>
         </div>
       </div>
       <div className="row mt-3">{movieList}</div>

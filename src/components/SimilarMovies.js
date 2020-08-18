@@ -34,7 +34,10 @@ const SimilarMovies = ({ params }) => {
     <SimilarMoviesStyle>
       <div className="row mt-3">
         <div className="col">
-          <h5 className="mb-3"> SIMILAR MOVIES</h5>
+          <h5 className="mb-3" style={{ color: " #f4c10f" }}>
+            {" "}
+            SIMILAR MOVIES
+          </h5>
           <div className="row mt-3">{similarMovieList}</div>
         </div>
       </div>

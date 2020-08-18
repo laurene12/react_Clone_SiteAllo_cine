@@ -16,7 +16,7 @@ const UpComming = () => {
 
   const listMoviesUpComming = data.slice(4, 8).map((item, index) => {
     return (
-      <div className="col-md-3 col-sm-6" key={index}>
+      <div className="col-md-3 col-sm-6 mt-3" key={index}>
         <Link to={`/movie/${item.id}`}>
           <figure>
             <img
@@ -34,12 +34,11 @@ const UpComming = () => {
   return (
     <UpCommingStyle>
       <div className="container">
-        <div className="row mt-3">
+        <div className="row">
           <div className="col">
-            <h1 className="font-weight-bold" style={{ color: "#fff" }}>
-              Movies up comming
-            </h1>
-            <div className="row mt-3">{listMoviesUpComming}</div>
+            <hr className="col-md-3"></hr>
+            <h1 className="font-weight-bold text-center">Up comming Movies</h1>
+            <div className="row mt-3 ">{listMoviesUpComming}</div>
           </div>
         </div>
       </div>
@@ -65,5 +64,8 @@ const UpCommingStyle = styled.div`
     text-decoration: none;
     list-style: none;
     font-weight: 500;
+  }
+  hr {
+    border: 4px solid #f4c10f;
   }
 `;

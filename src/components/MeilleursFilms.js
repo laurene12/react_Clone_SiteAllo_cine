@@ -36,7 +36,9 @@ const MeilleursFilms = () => {
       <div className="container">
         <div className="row mt-3">
           <div className="col">
-            <h1 className="font-weight-bold">Top Movies</h1>
+            <hr></hr>
+            <h1 className="font-weight-bold text-center">Top Movies</h1>
+            <hr></hr>
             <div className="row mt-3">{topMoviesList}</div>
           </div>
         </div>
@@ -62,5 +64,8 @@ const MeilleursFilmStyle = styled.div`
     text-decoration: none;
     list-style: none;
     font-weight: 500;
+  }
+  hr {
+    border: 1px solid #f4c10f;
   }
 `;

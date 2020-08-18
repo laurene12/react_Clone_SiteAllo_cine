@@ -42,7 +42,9 @@ const CastsMovies = ({ params }) => {
       <div className="container">
         <div className="row mt-3 col-sm-6">
           <div className="col">
-            <h5 className="mb-3"> ACTORS MOVIE</h5>
+            <h5 className="mb-3" style={{ color: " #f4c10f" }}>
+              ACTORS MOVIE
+            </h5>
           </div>
         </div>
         <div>{castList}</div>
@@ -54,10 +56,6 @@ const CastsMovies = ({ params }) => {
 export default CastsMovies;
 
 const CastsMoviesStyle = styled.div`
-  h5 {
-    color: #5a606b;
-    font-weight: bolder;
-  }
   span {
     color: #5a606b;
   }
