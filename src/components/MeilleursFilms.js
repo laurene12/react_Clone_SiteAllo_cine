@@ -36,10 +36,9 @@ const MeilleursFilms = () => {
       <div className="container">
         <div className="row mt-3">
           <div className="col">
-            <hr></hr>
+            <hr className="col-md-3"></hr>
             <h1 className="font-weight-bold text-center">Top Movies</h1>
-            <hr></hr>
-            <div className="row mt-3">{topMoviesList}</div>
+            <div className="row mt-3 mb-3">{topMoviesList}</div>
           </div>
         </div>
       </div>

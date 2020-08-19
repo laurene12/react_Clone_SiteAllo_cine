@@ -66,6 +66,6 @@ const UpCommingStyle = styled.div`
     font-weight: 500;
   }
   hr {
-    border: 4px solid #f4c10f;
+    border: 1px solid #f4c10f;
   }
 `;
